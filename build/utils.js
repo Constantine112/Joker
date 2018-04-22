@@ -51,6 +51,7 @@ exports.cssLoaders = function (options) {
             publicPath: '../../../',         // 修改这里
             fallback: 'vue-style-loader'
         })
+
     } else {
         return ['vue-style-loader'].concat(loaders)
     }

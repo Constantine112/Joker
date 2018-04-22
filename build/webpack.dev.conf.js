@@ -68,7 +68,8 @@ var pages = utils.getEntries('./src/html/*/*.html')
 for (var pathname in pages) {
     // 配置生成的html文件，定义路径等
     var conf = {
-    // favicon: "favicon.ico",
+
+      // favicon: "favicon.ico",
       filename: pathname + '.html',
       template: pages[pathname][1],   // 模板路径
       inject: true,              // js插入位置
@@ -92,9 +93,10 @@ module.exports = new Promise((resolve, reject) => {
       devWebpackConfig.devServer.port = port
 
       // Add FriendlyErrorsPlugin
+      let pageName = '/' + Object.getOwnPropertyNames(utils.getEntries('./src/html/*/*.html'))[0] + '.html';
       devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
         compilationSuccessInfo: {
-          messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`],
+          messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${port}` + pageName],
         },
         onErrors: config.dev.notifyOnErrors
         ? utils.createNotifierCallback()
@@ -104,4 +106,6 @@ module.exports = new Promise((resolve, reject) => {
       resolve(devWebpackConfig)
     }
   })
+
 })
+
