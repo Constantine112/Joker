@@ -164,11 +164,15 @@ for (var pathname in pages) {
         // https://github.com/kangax/html-minifier#options-quick-reference
         },
     // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-    chunksSortMode: 'dependency',
+    chunksSortMode: function (chunk1, chunk2) {
+      var order1 = chunks.indexOf(chunk1.names[0])
+      var order2 = chunks.indexOf(chunk2.names[0])
+      return order1 - order2
+    },
     };
     if (pathname in module.exports.entry) {    //为页面导入所需的依赖
-    conf.chunks = ['vendor','manifest', pathname];
-    conf.hash = false;
+      conf.chunks = ['vendor','manifest', pathname];
+      conf.hash = false;
     }
     webpackConfig.plugins.push(new HtmlWebpackPlugin(conf));
 }

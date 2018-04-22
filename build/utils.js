@@ -4,6 +4,7 @@ const config = require('../config')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const packageConfig = require('../package.json')
 var glob = require('glob')
+
 exports.assetsPath = function (_path) {
   const assetsSubDirectory = process.env.NODE_ENV === 'production'
     ? config.build.assetsSubDirectory
@@ -46,11 +47,12 @@ exports.cssLoaders = function (options) {
     // (which is the case during production build)
     if (options.extract) {
       return ExtractTextPlugin.extract({
-        use: loaders,
-        fallback: 'vue-style-loader'
-      })
+            use: loaders,
+            publicPath: '../../../',         // 修改这里
+            fallback: 'vue-style-loader'
+        })
     } else {
-      return ['vue-style-loader'].concat(loaders)
+        return ['vue-style-loader'].concat(loaders)
     }
   }
 

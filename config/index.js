@@ -9,7 +9,7 @@ module.exports = {
 
     // Paths
     assetsSubDirectory: 'static',
-    assetsPublicPath: '../',
+    assetsPublicPath: '/',
     proxyTable: {},
 
     // Various Dev Server settings
@@ -33,7 +33,16 @@ module.exports = {
     // https://vue-loader.vuejs.org/en/options.html#cachebusting
     cacheBusting: true,
 
-    cssSourceMap: true
+    cssSourceMap: true,
+    proxyTable: {
+        '/anywork': {
+            target: 'http://10.21.48.11:8080',
+            changeOrigin: true,
+            pathRewrite: {
+                '^/anywork': '/anywork'
+            }
+        }
+    },
   },
 
   build: {
@@ -43,7 +52,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: '../',
 
     /**
      * Source Maps
@@ -67,3 +76,4 @@ module.exports = {
     bundleAnalyzerReport: process.env.npm_config_report
   }
 }
+
