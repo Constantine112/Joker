@@ -29,7 +29,7 @@
   </div>
 </template>
 <script>
-	import axios from 'axios';
+	// import axios from 'axios';
 
 	export default {
 		name: 'register',
@@ -47,25 +47,25 @@
 		methods:{
 			registerQuest(){
 				let that = this;
-				axios.post('http://47.106.74.67:8080/register',{
-          'data': JSON.stringify({
-            userName:that.userName,
-            userAccount: that.userAccount,
-            userPassword:that.userPassword,
-            userPhone:that.userPhone,
-            userStore:that.userStore,
-            id:that.id,
-            userAddress:that.userAddress
-          })})
-          .then(function(res){
-            if(res.status===200){
-              that.$router.push('/login');
-            }
-          })
-          .catch(function(res){
-            console.log(res);
-            alert("注册失败!");
-          })
+				// axios.post('http://47.106.74.67:8080/register',{
+        //   'data': JSON.stringify({
+        //     userName:that.userName,
+        //     userAccount: that.userAccount,
+        //     userPassword:that.userPassword,
+        //     userPhone:that.userPhone,
+        //     userStore:that.userStore,
+        //     id:that.id,
+        //     userAddress:that.userAddress
+        //   })})
+        //   .then(function(res){
+        //     if(res.status===200){
+        //       that.$router.push('/login');
+        //     }
+        //   })
+        //   .catch(function(res){
+        //     console.log(res);
+        //     alert("注册失败!");
+        //   })
 			}
 		},
 		created:function(){
@@ -73,4 +73,4 @@
 		}
 	}
 </script>
-<style scoped src="../assets/css/login_register.css"></style>
+<style scoped src="../../../assets/css/login_register.css"></style>

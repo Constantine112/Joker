@@ -2,8 +2,8 @@
 
 export default{
     actions: {
-    	getMyInfo: "getMyInfo",
-      exit: "exit"
+    	login: "login",
+        exit: "exit"
     },
     mutations: {
         setInfo: "setInfo",

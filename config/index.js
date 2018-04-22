@@ -35,11 +35,11 @@ module.exports = {
 
     cssSourceMap: true,
     proxyTable: {
-        '/anywork': {
-            target: 'http://10.21.48.11:8080',
+        '/api': {
+            target: 'http://47.106.74.67:8080',
             changeOrigin: true,
             pathRewrite: {
-                '^/anywork': '/anywork'
+                '^/api': '/'
             }
         }
     },

@@ -14,36 +14,62 @@
   </div>
 </template>
 <script>
-	import axios from 'axios';
+	
+import {mapState, mapActions} from 'vuex';
 
 	export default {
 		name: 'login',
+		
 		data(){
 			return {
 				userAccount:'',
 				userPassword:''
 			}
 		},
+		computed: {
+
+			// 从这里引入 vueX 的 state 的变量到组件中用
+			...mapState('user' ,{
+				// 这里用到的是 es6 的函数写法
+                'visual': state => {
+                    console.log("ggg" ,state);
+                    return state
+				},
+			}),
+      // 'visual': this.$store
+		},
 		methods:{
+			...mapActions('user', [
+        'login',
+      ]),
 			loginQuest(){
 				let that = this;
 				if(this.userPassword.length===0||this.userAccount.length===0){
 					return false;
 				}
-        // that.$router.push('/orderindex');
-				axios.get('http://47.106.74.67:8080/login',{
-					'data': JSON.stringify({
+				this.login({
 						userAccount: that.userAccount,
 						userPassword:that.userPassword
-					})})
-					.then(function(res){
-						/*if(res.status===200){*/
-							that.$router.push('/orderindex');
-						/*}*/
+					}).then((data)=>{
+						// console.log(data);
+						console.log(1)
+					}).catch(err => {
+						console.log(err)
 					})
-					.catch(function(res){
-						alert("登录失败！")
-					})
+        // that.$router.push('/orderindex');
+				// axios.get('http://47.106.74.67:8080/login',{
+				// 	'data': JSON.stringify({
+				// 		userAccount: that.userAccount,
+				// 		userPassword:that.userPassword
+				// 	})})
+				// 	.then(function(res){
+				// 		/*if(res.status===200){*/
+				// 			that.$router.push('/orderindex');
+				// 		/*}*/
+				// 	})
+				// 	.catch(function(res){
+				// 		alert("登录失败！")
+				// 	})
         // axios.post('/login',{
         //   'data': JSON.stringify({
         //     userAccount: that.userAccount,
@@ -65,4 +91,4 @@
 
 	}
 </script>
-<style scoped src="../assets/css/login_register.css"></style>
+<style scoped src="../../../assets/css/login_register.css"></style>
