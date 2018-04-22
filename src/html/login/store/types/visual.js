@@ -4,7 +4,7 @@
 
 export default {
     actions: {
-        getLineChartData:"getLineChartData",
+        register:"register",
     },
     mutations: {
         setInfo:"setInfo",

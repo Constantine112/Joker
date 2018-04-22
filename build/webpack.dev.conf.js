@@ -26,6 +26,18 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     hot: true,
     contentBase: false, // since we use CopyWebpackPlugin.
     compress: true,
+    historyApiFallback: {
+      rewrites: [
+        { 
+          from: /^\/html\/.*$/, 
+          to: function(context) {
+            // console.log(context.parsedUrl.pathname + '.html')
+            return context.parsedUrl.pathname + '.html'
+          } 
+        },
+      
+      ]
+    },
     host: HOST || config.dev.host,
     port: PORT || config.dev.port,
     open: config.dev.autoOpenBrowser,
@@ -33,7 +45,16 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       ? { warnings: false, errors: true }
       : false,
     publicPath: config.dev.assetsPublicPath,
-    proxy: config.dev.proxyTable,
+    // proxy: config.dev.proxyTable,
+    proxy: {
+        '/api': {
+            target: 'http://192.168.1.101:8080',
+            changeOrigin: true,
+            pathRewrite: {
+                '^/api': ''
+            }
+        }
+    },
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
       poll: config.dev.poll,

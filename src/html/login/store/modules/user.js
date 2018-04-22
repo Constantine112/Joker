@@ -32,8 +32,8 @@ const actions = {
             // })
 
             myAxios({
-                method: 'get',
-                url: '/login',
+                method: 'post',
+                url: 'login',
                 data:JSON.stringify(data),
             }).then(function(res){
                 if(res.data.state.toString()==="0"){

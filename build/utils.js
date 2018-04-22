@@ -122,7 +122,7 @@ exports.getEntries = function (globPath) {
       var tmp = entry.split('/').splice(-3)
       if(basename!==tmp[1]) return;  //过滤其他js文件
       var pathname = tmp.splice(0, 1) + '/' + basename // splice(0, 1)取tmp数组中第一个元素
-      entries[pathname] = ['babel-polyfill',entry]
+      entries[pathname] = ['babel-polyfill', entry]
       
   })
   
@@ -135,7 +135,7 @@ exports.getEntries = function (globPath) {
   tmp:        [ 'html', 'index', 'index.js' ]
   pathname:   html/index
   enteries:   { 
-                  'html/index': '../src/html/index/index.js',
-                  'html/first': '../src/html/first/first.js' 
+                  'html/index': ['babel-polyfill', '../src/html/index/index.js'],
+                  'html/first': ['babel-polyfill', '../src/html/first/first.js'] 
               }
 */

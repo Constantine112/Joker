@@ -32,7 +32,7 @@ import {mapState, mapActions} from 'vuex';
 			...mapState('user' ,{
 				// 这里用到的是 es6 的函数写法
                 'visual': state => {
-                    console.log("ggg" ,state);
+
                     return state
 				},
 			}),
@@ -47,6 +47,8 @@ import {mapState, mapActions} from 'vuex';
 				if(this.userPassword.length===0||this.userAccount.length===0){
 					return false;
 				}
+
+				
 				this.login({
 						userAccount: that.userAccount,
 						userPassword:that.userPassword

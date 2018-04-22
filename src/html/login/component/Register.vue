@@ -30,7 +30,7 @@
 </template>
 <script>
 	// import axios from 'axios';
-
+	import {mapState, mapActions} from 'vuex';
 	export default {
 		name: 'register',
 		data(){
@@ -44,7 +44,22 @@
 				id: ''
 			}
 		},
+		computed: {
+
+			// 从这里引入 vueX 的 state 的变量到组件中用
+			...mapState('visual' ,{
+				// 这里用到的是 es6 的函数写法
+                'visual': state => {
+
+                    return state
+				},
+			}),
+      		// 'visual': this.$store
+		},
 		methods:{
+			...mapActions('visual', [
+				'register',
+			]),
 			registerQuest(){
 				let that = this;
 				// axios.post('http://47.106.74.67:8080/register',{
@@ -65,7 +80,21 @@
         //   .catch(function(res){
         //     console.log(res);
         //     alert("注册失败!");
-        //   })
+		//   })
+				this.login({
+					userName: that.userName,
+					userAccount:that.userAccount,
+					userPassword: that.userPassword,
+					userStore: that.userStore,
+					userAddress: that.userAddress,
+					userPhone: that.userPhone,
+					id: that.id
+				}).then((data)=>{
+						// console.log(data);
+					console.log(1)
+				}).catch(err => {
+					console.log(err)
+				})
 			}
 		},
 		created:function(){
