@@ -7,7 +7,8 @@ const state = {
     id: undefined,
     // userAccount: '',
     // userPassword: '',
-    allUsers: []
+    allUsers: [],
+    success: false,
 }
 
 const getters = {
@@ -85,7 +86,7 @@ const actions = {
 
 const mutations = {
     ["setInfo"]: (state, datas) => {
-        Object.assign(state,datas)
+        state.success = true;
     },
 }
 

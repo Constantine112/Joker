@@ -59,7 +59,7 @@ const actions = {
 }
 
 const mutations = {
-    ["setInfo"]: (state, datas) => {
+    [types.mutations.setInfo]: (state, datas) => {
         // console.log("state is:789",state);
         Object.assign(state,datas);
         // console.log("state is:123456",state);

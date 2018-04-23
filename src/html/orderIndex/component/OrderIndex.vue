@@ -80,8 +80,8 @@
 	</div>
 </template>
 <script>
-	import Printer from '../components/Printer';
-	import AddPrinter from '../components/AddPrinter.vue'
+	import Printer from './Printer';
+	import AddPrinter from './AddPrinter.vue'
 	import axios from 'axios'
 
 	export default {
@@ -280,4 +280,4 @@
 		}
 	}
 </script>
-<style scoped src='../assets/css/order.css'></style>
+<style scoped src='../../../assets/css/order.css'></style>

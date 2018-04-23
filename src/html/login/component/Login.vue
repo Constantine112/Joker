@@ -23,7 +23,8 @@ import {mapState, mapActions} from 'vuex';
 		data(){
 			return {
 				userAccount:'',
-				userPassword:''
+				userPassword:'',
+				loginSuccess: false,
 			}
 		},
 		computed: {
@@ -54,7 +55,8 @@ import {mapState, mapActions} from 'vuex';
 						userPassword:that.userPassword
 					}).then((data)=>{
 						// console.log(data);
-						console.log(1)
+						this.loginSuccess = this.user.success
+						window.location = '../../orderIndex/orderIndex.html'
 					}).catch(err => {
 						console.log(err)
 					})

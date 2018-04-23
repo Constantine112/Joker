@@ -81,7 +81,7 @@
         //     console.log(res);
         //     alert("注册失败!");
 		//   })
-				this.login({
+				this.register({
 					userName: that.userName,
 					userAccount:that.userAccount,
 					userPassword: that.userPassword,

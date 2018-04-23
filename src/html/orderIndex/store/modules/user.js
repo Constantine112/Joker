@@ -1,4 +1,4 @@
-// import types from '../types/user'
+import types from '../types/user'
 import { myAxios, IP } from '@/utils/interaction'
 
 // console.log("+++", types);
@@ -8,7 +8,8 @@ const state = {
    	userName: '',
    	account: '',
     admin: 0,   // 0：管理员，1：普通用户
-    allUsers: []
+    allUsers: [],
+    curLists: []
 }
 
 const getters = {
