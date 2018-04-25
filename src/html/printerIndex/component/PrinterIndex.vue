@@ -59,5 +59,5 @@
 		}
 	}
 </script>
-<!--<style scoped src='@/assets/css/order.css'>
-</style>-->
+<style scoped src='@/assets/css/order.css'>
+</style>

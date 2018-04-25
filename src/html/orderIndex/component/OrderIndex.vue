@@ -10,25 +10,30 @@
 		    <div class="subwrapper of">
 		        <div class="sidebar">
 		            <!-- 打印机列表（显示状态） -->
-					<a href="#" id="add_printer" @click="isAddShow=true">增加打印机</a>
 					<p v-if="printerList.length==0">当前没有打印机</p>
-		            <ul class="sb_printer" v-for="printer in printerList">
+		            <ul class="sb_printer" v-for="printer in printerList" :key="printer">
 
 						<printer :printer="printer"></printer>
 		            </ul>
+					<a href="#" id="add_printer" @click="isAddShow=true">
+						<img src="../../../assets/images/add.png" alt="1">
+					</a>
 		        </div>
-            <div class="system">
-              <p>系统状态提醒</p>
-              <ul>
-                <li>当前吞吐量: <span v-text="tuntu"></span> bt/s</li>
-                <li>主控板连接数量: 6</li>
-                <li>打印失误率: 1%</li>
-                <li>是否在打印：是</li>
-                <li>当前打印数量： <span v-text="number"></span>份</li>
-                <li>打印机连接总数量：12</li>
-              </ul>
+            <div class="section system_parameter">
+              <p class="index_title">系统状态提醒</p>
+			  <div class="parameter_list">
+				<ul>
+					<li>当前吞吐量: <span v-text="tuntu"></span> bt/s</li>
+					<li>主控板连接数量: 6</li>
+					<li>打印失误率: 1%</li>
+					<li>是否在打印：是</li>
+					<li>当前打印数量： <span v-text="number"></span>份</li>
+					<li>打印机连接总数量：12</li>
+				</ul>
+			  </div>
             </div>
 		        <div class="section">
+					<p class="index_title">打印状态</p>
 		            <ul class="sb_order">
 		                <li id="ab_od_typing" @click="showTyping" :class="{cur:isShow}">正在打印订单</li>
 		                <li id="ab_od_typed" @click="showTyped" :class="{cur:!isShow}">打印完成订单</li>
@@ -58,7 +63,7 @@
 		                    <div class="order" v-if="curList.length==0">
 		                        <p class='ct'> 当前没有订单</p>
 		                    </div>
-		                    <div class="order_box" v-for="order in curList">
+		                    <div class="order_box" v-for="order in curList" :key="order">
 			                    <div class="order">
 	                                <p class="order_number">
 	                    				{{order.id}}
@@ -76,7 +81,7 @@
 		   	<button  @click="quit">取消</button>
 		   </add-printer>
 		</div>
-		<div id="ware"></div>
+		<!-- <div id="ware"></div> -->
 	</div>
 </template>
 <script>
@@ -147,20 +152,20 @@
 				// 	 	alert("获取正在打印订单失败!")
 				// 	 });
         clearInterval(that.time);
-        that.time=setInterval(()=>{
-          axios.get('http://47.106.74.67:8080/order/typed/'+this.userId)
-           .then(function(res){
-            that.curList = res.data.data;
-           }).catch(function(res){
-            alert("获取正在打印订单失败!")
-           });
-          // axios.get('http://47.106.74.67:8080/order/typing/'+this.userId)
-          //  .then(function(res){
-          //   that.curList = res.data.data;
-          //  }).catch(function(res){
-          //   alert("获取打印完成订单失败!")
-          //  });
-        }, 2000);
+        // that.time=setInterval(()=>{
+        //   axios.get('http://47.106.74.67:8080/order/typed/'+this.userId)
+        //    .then(function(res){
+        //     that.curList = res.data.data;
+        //    }).catch(function(res){
+        //     alert("获取正在打印订单失败!")
+        //    });
+        //   axios.get('http://47.106.74.67:8080/order/typing/'+this.userId)
+        //    .then(function(res){
+        //     that.curList = res.data.data;
+        //    }).catch(function(res){
+        //     alert("获取打印完成订单失败!")
+        //    });
+        // }, 2000);
 				this.isShow = false;
 
 			},
@@ -173,20 +178,20 @@
 				// 	 	alert("获取打印完成订单失败!")
 				// 	 });
         clearInterval(that.time);
-        that.time=setInterval(()=>{
-          // axios.get('http://47.106.74.67:8080/order/typed/'+this.userId)
-          //  .then(function(res){
-          //   that.curList = res.data.data;
-          //  }).catch(function(res){
-          //   alert("获取正在打印订单失败!")
-          //  });
-          axios.get('http://47.106.74.67:8080/order/typing/'+this.userId)
-           .then(function(res){
-            that.curList = res.data.data;
-           }).catch(function(res){
-            alert("获取打印完成订单失败!")
-           });
-        }, 2000);
+        // that.time=setInterval(()=>{
+        //   axios.get('http://47.106.74.67:8080/order/typed/'+this.userId)
+        //    .then(function(res){
+        //     that.curList = res.data.data;
+        //    }).catch(function(res){
+        //     alert("获取正在打印订单失败!")
+        //    });
+        //   axios.get('http://47.106.74.67:8080/order/typing/'+this.userId)
+        //    .then(function(res){
+        //     that.curList = res.data.data;
+        //    }).catch(function(res){
+        //     alert("获取打印完成订单失败!")
+        //    });
+        // }, 2000);
 				this.isShow = true;
         // this.inv();
 			},
@@ -280,4 +285,4 @@
 		}
 	}
 </script>
-<style scoped src='../../../assets/css/order.css'></style>
+<style scoped src='@/assets/css/order.css'></style>

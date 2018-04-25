@@ -1,15 +1,19 @@
 <template>
 	<li>
-        <p>
+        <!-- <p>
             <router-link :to="{ path: 'printerindex', query: { printerId: printer.id }}" >
-            	{{printer.id}}号主控板(trust:10%)<!-- ({{printer.trust}}) -->
+            	{{printer.id}}号主控板(trust:10%)
               <br>打印机数量：2
             </router-link>
         </p>
     	<span></span>
         <p class="printer_status" :class="statusClass">
             {{statusText}}
-        </p>
+        </p> -->
+		<img src="../../../assets/images/icon.png" alt="icon">
+    	<p class="control_board_number">主控板{{ printer.id }}号</p>
+    	<p class="board_status">主板状态&ensp;&ensp;&ensp;&ensp;3</p>
+    	<p class="printer_amount">打印机数量&ensp;&ensp;3</p>
 	</li>
 </template>
 <script>
@@ -82,10 +86,17 @@
 	}
 </script>
 <style scoped>
-	.sidebar li p {
+	/* .sidebar li p {
 	    margin: 0;
 	    padding: 15px;
 	    border-radius: 0 0 1px 1px;
+	} */
+
+	.sidebar li p {
+	    margin: 4px 0;
+
+	    border-radius: 0 0 1px 1px;
+	    font-size: 15px;
 	}
 
 	.sidebar span{
@@ -94,17 +105,21 @@
 	    width: 50px;
 	    margin: 0 auto 15px;
 	    height: 54px;
-	    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAA2CAMAAACycDqVAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo0N2U0OGE4ZS0zY2M4LTRkNGItOWM1OS00OWM3Y2YxZWJmYWIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RUNCMjAxN0E1MjExMTFFNkIwMTBGODM3RjRFOEEyQzYiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RUNCMjAxNzk1MjExMTFFNkIwMTBGODM3RjRFOEEyQzYiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NDg2MTJhNjAtNDcyMS1lNjQyLWIwMGItZDZhMTUwYzk1NWM1IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjQ3ZTQ4YThlLTNjYzgtNGQ0Yi05YzU5LTQ5YzdjZjFlYmZhYiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PodVyJsAAACWUExURVhk/////8fL/+nq/+Lk/5CY/7C2/6et/3mD/9LW/7zB//T1/97g/1tn/8nN/4aP/2Fs/6yy/8bK/660/2t2/73C//X2/8/T/7S5/9jb/3eB/6ux/2x2/9PW/62z/2Jt/87R//Lz/8vP//P0/2dy/32H//f4/8DF/5GZ/9TX/3qE//X1/32G/8LG/7i9/2Ju/7e8/3J8/1l2LnUAAADjSURBVHja7NZpC4JAEIDhWbXDyvtO7b7v/v+fC/HLLu6YExIGvd8EH2QFZwTG591B0twTbgL+4ghIOUr6GJnRyeBPWiNnFWmNkmYBU02FkKkyUAwgZSiQATEfvtn0RBUPxq408Sxe94VErIIcSMReMrbbEE+/WmzhHzWrV5MlJVrdp6i1R/ZDpBtKaobSb5JAFwoaEE3ydt8QdyLkVklGPYvPDdhmxHC5MR6WJBbndlySkBvjlZUkP37tFovEbRR1Zr2mI6G0Afng+MlYKOn034WDkhwjOv534djS9SM8hL0EGACqCw/K/qoIbQAAAABJRU5ErkJggg==);
+	    
 	}
 
 	.sidebar li {
 	    margin-bottom: 15px;
-	    width: 10em;
+	    padding:8px 15px;
+	    width: 8em;
 	    border-radius: 3px;
 	    border: 2px solid #e5e5e5;
 	    background: white;
 	    text-align: center;
+
 	}
+
+	
 
 	.sidebar .printer_status {
 	    padding: 10px 0;
@@ -123,5 +138,10 @@
 	.printer_abnormal {
 	    background: #f33434;
 	    color: white;
+	}
+	.control_board_number {
+		/*margin-bottom: 5px;*/
+		border-bottom: 1px solid rgb(200, 200, 200);
+		padding-bottom: 10px;
 	}
 </style>
