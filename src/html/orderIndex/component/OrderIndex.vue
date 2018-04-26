@@ -12,11 +12,9 @@
 		            <!-- 打印机列表（显示状态） -->
 					<p v-if="printerList.length==0">当前没有打印机</p>
 		            <ul class="sb_printer" v-for="printer in printerList" :key="printer">
-
 						<printer :printer="printer"></printer>
 		            </ul>
 					<a href="#" id="add_printer" @click="isAddShow=true">
-						<img src="../../../assets/images/add.png" alt="1">
 					</a>
 		        </div>
             <div class="section system_parameter">
@@ -37,20 +35,20 @@
 		            <ul class="sb_order">
 		                <li id="ab_od_typing" @click="showTyping" :class="{cur:isShow}">正在打印订单</li>
 		                <li id="ab_od_typed" @click="showTyped" :class="{cur:!isShow}">打印完成订单</li>
-		                <li id="ab_od_now">
-		                	<router-link to="/orderbuy">
+		                <li id="ab_od_search">
+		                	<a href="orderBuy.html">
 		                		自助下单
-		                	</router-link>
+		                	</a>
 		                </li>
 		                <li id="ab_od_search">
-		                	<router-link to="/batchsearch">
+		                	<a href="batchSearch.html">
 		                		批次查询
-		                	</router-link>
+		                	</a>
 		                </li>
 		                <li id="ab_od_search">
-		                	<router-link to="/ordersearch">
+		                	<a href="orderSearch.html">
 		                		查询订单
-		                	</router-link>
+		                	</a>
 		                </li>
 
 		            </ul>
@@ -240,7 +238,7 @@
            //  successRate: 0,
            //  unsendedOrdersNum: 0,
            // }
-           for (let i = 1; i <= 6; i++) {
+           for (let i = 1; i <= 5; i++) {
               let data = {
                 connected: false,
                 cre: 5,

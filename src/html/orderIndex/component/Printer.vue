@@ -115,7 +115,8 @@
 	    border-radius: 3px;
 	    border: 2px solid #e5e5e5;
 	    background: white;
-	    text-align: center;
+		text-align: center;
+		cursor: pointer;
 
 	}
 
