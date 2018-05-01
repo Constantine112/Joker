@@ -24,8 +24,6 @@ button{
 #container{
     margin: 0;
     padding: 0;
-    padding-bottom: 10%;
-    padding-bottom: 5%;
 }
 
 .wrapper {
@@ -34,11 +32,19 @@ button{
 }
 /* .system {
   border: 1px solid #ddd;
+} */
+.system ul {
+    text-align: left;
+    list-style: disc inside;
+    padding: 20px 30px;
+    border: 1px solid #000;
+    border-radius: 10px;
 }
 .system ul li {
   display: inline-block;
-      width: 170px;
-} */
+      width: 300px;
+      padding: 0 0 0 20px;
+}
 .subwrapper {
     margin: 0 auto;
     width: 80%;
@@ -50,27 +56,19 @@ button{
 #add_printer{
     display: block;
     margin-top: 7%;
-    /* margin-left: 1.5%; */
+    margin-left: 1.5%;
     border-radius: 3px;
-    border: 2px solid #e5e5e5;
     line-height: 40px;
     width: 10em;
-    height: 2.5em;
     text-decoration: none;
-    background-image: url(../images/add.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    /* background-color: #d9d9d7; */
-    /* color: #999; */
+    background-color: #d9d9d7;
+    color: #999;
 }
 #add_printer:hover{
-    /* box-shadow: 0px 0px 20px 1px #aaa;
+    box-shadow: 0px 0px 20px 1px #aaa;
     background: #eeeeee;
-    color: #aaa; */
-    /* border: 2px solid #cacaca; */
-    background-color: #f3f2f2
+    color: #aaa;
 }
-
 .user {
     margin-right: 10%;
     line-height: 60px;
@@ -116,212 +114,148 @@ button{
     margin-top: 5%;
 }
 
-/* #add_printer {
-    background-image: url(../images/add.png);
-    background-repeat: no-repeat;
-    background-position: center; 
-}*/
-
 /* end sidebar */
 
 
 /* section */
 
-.index_title {
-  border-left: 5px solid #7b85df;
-  padding-left: 5px;
-  font-size: 20px;
-  color: #6a696b;
-  text-align: left;
-}
-
-/** printer status **/
-
 .sb_order {
-  overflow: hidden;
-  padding: 10px 5px;
-  margin-bottom: 30px;
+    overflow: hidden;
+    padding: 10px 5px;
+    margin-bottom: 30px;
 }
 
-.sb_order .cur {
-  color: white;
-  background: #a192e8;
+.sb_order .cur{
+   color: white;
+   background: #a192e8;
 }
 
 .sb_order li {
-  padding: 9px 15px;
-  border: none;
-  border-radius: 3px;
-  float: left;
-  width: 6em;
-  background: #d9d9d7;
-  margin-right: 25px;
-  cursor: pointer;
+    padding: 9px 15px;
+    border: none;
+    border-radius: 3px;
+    float: left;
+    width: 6em;
+    background: #d9d9d7;
+    margin-right: 25px;
+    cursor: pointer;
 }
 
 .sb_order li:hover,
 .sb_order li.select {
-  /* box-shadow: 0px 0px 20px 1px rgb(225, 225, 225); */
-  /* background: #eeeeee; */
-  /* color: rgb(225, 225, 225); */
+    box-shadow: 0px 0px 20px 1px #aaa;
+    background: #eeeeee;
+    color: #aaa;
 }
 
-.sb_order :nth-child(3) {
+#ab_od_now{
+    width: 2em;
+    float: right;
     margin-right: 0;
-    background-color: #8985e3;
-
 
 }
 
-.sb_order :nth-child(4) {
-    background-color: #85afe3;
+#ab_od_now a{
+    color: inherit;
+    text-decoration: none;
 }
 
-.sb_order :nth-child(5) {
-     background-color:#85e38d;
+#ab_od_search{
+    width: 2em;
+    float: right;
+
 }
 
-#ab_od_search {
-  width: 2em;
-  float: right;
-  color: white;
+#ab_od_search a{
+    color: inherit;
+    text-decoration: none;
 }
-
-#ab_od_search a {
-  color: inherit;
-  text-decoration: none;
-}
-
 .section {
-  margin-left: 270px;
-  margin-top: 20px;
-  overflow: hidden;
-  padding-left: 20px;
-  background: white;
-  min-height: calc(100vh - 235px - 70px + 5px);
-  margin-right: 20px;
+    margin-left: 270px;
+    margin-top: 60px;
+    overflow: hidden;
+    padding-left: 20px;
+    background: white;
+    min-height: calc(100vh - 235px - 70px + 5px);
+    margin-right: 20px;
 }
 
 .sb_printer {
-  padding-top: 10px;
+    padding-top: 10px;
 }
 
 .typing_up_main {
-  border-radius: 3px;
-  border: 2px solid #e5e5e5;
+    border-radius: 3px;
+    border: 2px solid #e5e5e5;
 }
 
 .order {
-  background: white;
-  border-top: 2px solid #e5e5e5;
-  overflow: hidden;
-  padding: 0 30px;
-  text-align: left;
+    background: white;
+    border-top: 2px solid #e5e5e5;
+    overflow: hidden;
+    padding: 0 30px;
+    text-align: left;
 }
 
 .order.head {
-  border: none;
+    border: none;
 }
 
 .order_status {
-  width: 70%;
+    width: 70%;
 }
 
 .order_number {
-  width: 250px;
-  float: left;
-  text-indent: 20px;
+    width: 250px;
+    float: left;
+    text-indent: 20px;
 }
 
 .head .order_number {
-  text-indent: 0;
-  width: 240px;
-  padding-left: 10px;
+    text-indent: 0;
+    width: 240px;
+    padding-left: 10px;
 }
 
 .order_status {
-  text-indent: 20px;
-  margin-left: 250px;
+    text-indent: 20px;
+    margin-left: 250px;
 }
 
 .order:hover {
-  background: #e5e5e5;
+    background: #e5e5e5;
 }
 
 .order.head:hover {
-  background: white;
+    background: white;
 }
 
 .head .order_status {
-  text-indent: 0;
-  padding-left: 10px;
+    text-indent: 0;
+    padding-left: 10px;
 }
 
-.od_abnormal.order {
-  background: #f33434;
-  color: white;
+.od_abnormal.order{
+    background: #f33434;
+    color: white;
 }
 
-.od_abnormal.order:hover {
-  background: #f33434;
+.od_abnormal.order:hover{
+    background: #f33434;
 }
 
 .head p:before {
-  content: "-";
-  width: 16px;
-  height: 16px;
-  float: left;
-  margin: 3px 10px;
-  color: transparent;
-  background: radial-gradient( 9px 9px at 9px 9px, #87b9e7 82%, #729dc5 0);
-  border-radius: 50%;
+    content: "-";
+    width: 16px;
+    height: 16px;
+    float: left;
+    margin: 3px 10px;
+    color: transparent;
+    background: radial-gradient( 9px 9px at 9px 9px, #87b9e7 82%, #729dc5 0);
+    border-radius: 50%;
 }
 
-/** printer status **/
-
-/** system parameter **/
-
-.system_parameter {
-  margin-top: 60px;
-  min-height: 50px;
-}
-
-.parameter_list {
-  margin-top: 40px;
-  border: 2px solid rgb(229, 229, 229);
-  border-radius: 3px;
-  padding: 20px 30px 0 30px;
-  /*height: 100px;*/
-  text-align: left;
-}
-
-.parameter_list ul {
-  list-style: square;
-}
-
-.parameter_list li {
-  display: inline-block;
-  margin-bottom: 20px;
-  width: 25%;
-}
-
-.parameter_list li:before {
-  content: "-";
-  width: 14px;
-  height: 14px;
-  float: left;
-  margin: 3px 10px;
-  color: transparent;
-  background: radial-gradient( 9px 9px at 9px 9px, #888 82%, #888 0);
-
-
-  border-radius: 50%;
-}
-
-/** end system parameter **/
-
-/* end section */
-
+/*** end section **/
 /** footer **/
 .mh{
     min-height: calc(100vh - 235px - 70px + 5px);
@@ -379,7 +313,7 @@ button{
     float: left;
     margin: 3px 10px;
     color: transparent;
-    background: radial-gradient( 9px 9px at 9px 9px, #888 82%, #888 0);
+    background: radial-gradient( 9px 9px at 9px 9px, #87b9e7 82%, #729dc5 0);
     border-radius: 50%;
 }
 

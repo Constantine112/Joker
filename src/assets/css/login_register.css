@@ -1,8 +1,8 @@
 /*
 * @Author: 苏智龙
 * @Date:   2017-10-18 14:36:04
-* @Last Modified by:   苏智龙
-* @Last Modified time: 2017-10-18 22:49:42
+ * @Last Modified by: mikey.zhaopeng
+ * @Last Modified time: 2018-04-25 13:25:30
 */
 *{
 	margin: 0;
@@ -66,7 +66,7 @@ input{
   color:#fff;
 }
 button{
-    width: 64%;
+    width: 60%;
     padding: 0.6em 0;
     margin-top: 8px;
     background: -webkit-gradient(linear, right top, left top, color-stop(-99%, #d79bec), to(#868de6) );

@@ -3,8 +3,8 @@
     <div class="log-contain">
       <h2 class="log-h2">基于智能打印机的并行打印集群应用</h2>
     	<div id="login">
-        <input type="text" id="userAccount" name="userAccount" required v-model="userAccount" placeholder="请输入你的用户名">
-        <input type="password" id="userPassword" name="userPassword" required v-model="userPassword" placeholder="请输入你的密码">
+        <i-input type="text" id="userAccount" name="userAccount" required v-model="userAccount" style="width: 60%; margin: 10px;" placeholder="请输入你的用户名" class='change'></i-input>
+        <i-input type="password" id="userPassword" name="userPassword" required v-model="userPassword" style="width: 60%; margin: 10px;" placeholder="请输入你的密码"></i-input>
     		<router-link to="/register" class="register-contain">
     			<div class="register12">注册新用户</div>
     		</router-link>
@@ -96,3 +96,5 @@ import {mapState, mapActions} from 'vuex';
 	}
 </script>
 <style scoped src="../../../assets/css/login_register.css"></style>
+<style>
+</style>
