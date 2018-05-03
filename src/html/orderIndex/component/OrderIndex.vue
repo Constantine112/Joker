@@ -15,7 +15,7 @@
 		            <!-- 打印机列表（显示状态） -->
 					<a href="#" id="add_printer" @click="isAddShow=true">增加打印机</a>
 					<p v-if="printerList.length==0">当前没有打印机</p>
-		            <ul class="sb_printer" v-for="printer in printerList">
+		            <ul class="sb_printer" v-for="printer in printerList" v-bind:key="printer">
 
 						<printer :printer="printer"></printer>
 		            </ul>
@@ -62,7 +62,7 @@
 		                    <div class="order" v-if="curList.length==0">
 		                        <p class='ct'> 当前没有订单</p>
 		                    </div>
-		                    <div class="order_box" v-for="order in curList">
+		                    <div class="order_box" v-for="order in curList" v-bind:key="order">
 			                    <div class="order">
 	                                <p class="order_number">
 	                    				{{order.id}}

@@ -285,14 +285,15 @@ button{
     border-bottom: 5px solid transparent;
     border-size: cover;
     background: linear-gradient(white,white) padding-box, linear-gradient(to top, #9287c2 0, #8da8ea 5px ,transparent) border-box;
+    margin: 62px 0 0 0;
 }
 
-#model_all h1:before{
+/* #model_all h1:before{
     content: '>';
     font-size: 30px;
     vertical-align: top;
     font-stretch: initial;
-}
+} */
 
 .menu {
     margin: 43px 0;
@@ -375,6 +376,16 @@ button{
 .dish_status{
     overflow: hidden;
     height: 28px;
+    position: relative;
+    -moz-user-select:none;/*火狐*/
+
+    -webkit-user-select:none;/*webkit浏览器*/
+    
+    -ms-user-select:none;/*IE10*/
+    
+    -khtml-user-select:none;/*早期浏览器*/
+    
+    user-select:none;
 }
 
 .add_dish{
@@ -424,7 +435,9 @@ button{
     font-size: 12px;
     line-height: 12px;
     color: #5864ff;
-    width: 33px;
+    /* position: absolute; */
+    width: 78px;
+    right: 30px;
 }
 
 /** end button */
@@ -432,21 +445,24 @@ button{
 
 #shoppong_cart{
     position: absolute;
-    right: 0;
-    width: 27%;
+    right: 155px;
+    width: 22%;
     margin: 47px 0;
+    border: 1px solid #b2b2b2;
+    padding: 10px;
+    top:206px;
 }
 
 #sc_area{
-    display: none;
+    /* display: none; */
 }
 #sc_area.show{
     display: block;
 }
 .sc_head{
-    color: white;
+    color: rgb(20, 20, 20);
     overflow: hidden;
-    background: #5864ff;
+    /* background: #5864ff; */
 }
 
 .sc_head h2{
@@ -462,23 +478,34 @@ button{
 }
 
 .sc_head h2:before{
-    content: url(../images/shopping_cart.png);
+    content: '';
     margin-right: 10px;
-    width: 34px;
+    width: 14px;
     float: left;
     height: 27px;
     margin-left: 15px;
     vertical-align: middle;
-
+    background: #8288e3;
 }
 .sc_head span{
     float: right;
     margin-right: 10px;
     font-size: 30px;
 }
-
+/* #shoppong_cart li p {
+    margin: 0;
+} */
+.coooo {
+    position: absolute;
+}
 #shoppong_cart li{
     overflow: hidden;
+    height: 38px;
+    line-height: 38px;
+}
+#shoppong_cart li p {
+    margin: 0;
+    height: 100%;
 }
 #shoppong_cart ul{
     border-bottom: 1px solid #e5e5e5;
@@ -519,6 +546,10 @@ button{
 .shooping_button{
     float: right;
     position: relative;
+
+    position: absolute;
+    top: 218px;
+    right: -67px;
 }
 #counter_num{
 background: #f75e3a;
