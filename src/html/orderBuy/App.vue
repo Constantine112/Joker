@@ -1,17 +1,19 @@
 <template>
   <div id="app">
-    <order-buy></order-buy>
+
+      <orderBuy/>
+
   </div>
 </template>
 
 <script>
-import OrderBuy from './component/OrderBuy'
+
+import orderBuy from './component/OrderBuy';
+
 export default {
-    name: 'app',
-    components: {
-			// 什么要用到的其他组件
-		'order-buy': OrderBuy
-	},
+  name: 'app',
+  template: '<orderBuy/>',
+  components: { orderBuy }
 }
 </script>
 <style  scoped src="../../assets/css/normalize.css"></style>

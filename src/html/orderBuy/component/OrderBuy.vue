@@ -10,6 +10,7 @@
 		    <div class="subwrapper" id="model_all" style="text-align:left;">
 		        <h1>下单</h1>
 		        <button class="button" type="button">返回订单主页</button>
+
 		        <ul class="menu">
 		            <li class="head">
 		                <p class="dish_name">菜名</p>
@@ -33,22 +34,22 @@
 		            <div id="sc_area">
 		                <div class="sc_head">
 		                    <h2>购物车</h2>
-		                    <span>></span>
+		                    <!-- <span>></span> -->
 		                </div>
 		                <ul>
 
-		                    <li v-for="dish,$index  in dishes" v-if="dish.count !== 0">
+		                    <li v-for="dish,$index  in dishes" >
 		                        <p class="dish_name">{{dish.name}} <span class="dollar">{{dish.price}}</span></p>
 		                        <p class="dish_status">
-		                            <span class="change_dish nml" v-on:click='reduceDishCount($index)'>-</span>
-		                            <span class="dish_count">{{dish.count}} </span>
-		                            <span class="change_dish" v-on:click='addDishCount($index)'>+</span>
+		                            <span class="change_dish nml" v-on:click='reduceDishCount($index)' v-if="false">-</span>
+		                            <span class="dish_count coooo">{{dish.count}} 份</span>
+		                            <span class="change_dish" v-on:click='addDishCount($index)' v-if="false">+</span>
 		                        </p>
 		                    </li>
 		                    <li class="sum">
 		                        <span>共<span id="dish_cou">{{counter}}</span>份</span>
 		                        <!-- 这里添加一个触发状态的东西，一旦数目发生改变，这里的单价发生改变 -->
-		                        <span class="dollar" id="sum">{{ sum }}</span>
+		                        <span class="dollar " id="sum">{{ sum }}</span>
 		                        <input type="text" placeholder="打印机ID..." style="width:70px; height:25px" v-bind="printerid">
 		                        <button type="button" id="send_order" @click="sendOrder">确定</button>
 		                    </li>
@@ -66,6 +67,7 @@
 <script>
 	import axios from 'axios'
 	export default {
+		name: 'orderBuy',
 		data(){
 			return {
 				dishes: [
@@ -101,6 +103,7 @@
 				var len = this.dishes.length,
 					dishes = this.dishes,
 					sum = 0;
+					this.counter = 0;
 				// 计算总值+计算数量 v
 				for(var i = 0; i < len; i++){
 					sum += dishes[i].price * dishes[i].count;
@@ -122,6 +125,7 @@
 		},
 		methods: {
 			changeDishStatus: function(index){
+				console.log(this.dishes[index].count)
 				return ++this.dishes[index].count;
 			},
 			reduceDishCount: function(index){
@@ -134,12 +138,12 @@
 				return ++this.dishes[index].count;
 			},
 			toggle:function(){
-				var ele = document.getElementById('sc_area');
-				if(ele.className.indexOf('show') === -1){
-					ele.className += ' show';
-				}else{
-					ele.className = ele.className.replace(' show', '');
-				}
+				// var ele = document.getElementById('sc_area');
+				// if(ele.className.indexOf('show') === -1){
+				// 	ele.className += ' show';
+				// }else{
+				// 	ele.className = ele.className.replace(' show', '');
+				// }
 			},
 			sendOrder:function(){
 				var temp = new Date();

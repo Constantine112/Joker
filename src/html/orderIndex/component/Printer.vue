@@ -1,19 +1,16 @@
 <template>
 	<li>
-        <!-- <p>
+		<span></span>
+        <p>
             <router-link :to="{ path: 'printerindex', query: { printerId: printer.id }}" >
-            	{{printer.id}}号主控板(trust:10%)
-              <br>打印机数量：2
+            	{{printer.id}}号主控板<br><!-- ({{printer.trust}}) -->
+				主板状态：&nbsp;&nbsp;&nbsp;&nbsp;3
+              <br>打印机数量：&nbsp;&nbsp;2
             </router-link>
         </p>
-    	<span></span>
-        <p class="printer_status" :class="statusClass">
+        <!-- <p class="printer_status" :class="statusClass">
             {{statusText}}
         </p> -->
-		<img src="../../../assets/images/icon.png" alt="icon">
-    	<p class="control_board_number">主控板{{ printer.id }}号</p>
-    	<p class="board_status">主板状态&ensp;&ensp;&ensp;&ensp;3</p>
-    	<p class="printer_amount">打印机数量&ensp;&ensp;3</p>
 	</li>
 </template>
 <script>
@@ -86,41 +83,36 @@
 	}
 </script>
 <style scoped>
-	/* .sidebar li p {
-	    margin: 0;
-	    padding: 15px;
-	    border-radius: 0 0 1px 1px;
-	} */
-
 	.sidebar li p {
-	    margin: 4px 0;
-
-	    border-radius: 0 0 1px 1px;
-	    font-size: 15px;
+	    margin: 0;
+	    padding: 8px 0 15px 15px;
+		border-radius: 0 0 1px 1px;
+		    text-decoration:#fff;
 	}
-
+	.sidebar li p a{
+			text-decoration:none;
+			color: #000;
+			text-align: left;
+	}
 	.sidebar span{
-	    margin-bottom: 15px;
+	    /* margin-bottom: 4px; */
 	    display: block;
 	    width: 50px;
-	    margin: 0 auto 15px;
+	    margin: 10px auto 4px auto;
 	    height: 54px;
-	    
+		background-image: url(../style/icon.png);
+		background-repeat: no-repeat;
+		background-position: center;
 	}
 
 	.sidebar li {
 	    margin-bottom: 15px;
-	    padding:8px 15px;
-	    width: 8em;
+	    width: 10em;
 	    border-radius: 3px;
 	    border: 2px solid #e5e5e5;
 	    background: white;
-		text-align: center;
-		cursor: pointer;
-
+	    text-align: center;
 	}
-
-	
 
 	.sidebar .printer_status {
 	    padding: 10px 0;
@@ -139,10 +131,5 @@
 	.printer_abnormal {
 	    background: #f33434;
 	    color: white;
-	}
-	.control_board_number {
-		/*margin-bottom: 5px;*/
-		border-bottom: 1px solid rgb(200, 200, 200);
-		padding-bottom: 10px;
 	}
 </style>
