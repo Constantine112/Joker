@@ -9,9 +9,7 @@
 		<div class="wrapper" id="send_main">
 		    <div class="subwrapper" id="model_all" style="text-align:left;">
 		        <h1>下单</h1>
-		        <router-link to='/orderindex'>
-		        	<button class="button" type="button">返回订单主页</button>
-		        </router-link>
+		        <button class="button" type="button">返回订单主页</button>
 		        <ul class="menu">
 		            <li class="head">
 		                <p class="dish_name">菜名</p>
@@ -63,7 +61,6 @@
 		        </div>
 		    </div>
 		</div>
-		<div id="ware"></div>
 	</div>
 </template>
 <script>
@@ -193,5 +190,5 @@
 		}
 	}
 </script>
-<style scoped src="../assets/css/order.css">
+<style scoped src="@/assets/css/order.css">
 </style>
