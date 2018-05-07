@@ -8,11 +8,11 @@
 		</div>
 		<div class="wrapper" id="send_main">
 		    <div class="subwrapper" id="model_all" style="text-align:left;">
-		        <h1>下单</h1>
-		        <button class="button" type="button">返回订单主页</button>
+		        <p class="page_title"><img src="../../../assets/images/orders.png"><span>下单</span></p>
+		        <button class="button" type="button" onclick="window.location.replace('http://localhost:8080/html/orderIndex.html#/')">返回订单主页</button>
 
 		        <ul class="menu">
-		            <li class="head">
+		            <li class="menu_head">
 		                <p class="dish_name">菜名</p>
 		                <p class="dish_price">价格</p>
 		                <p class="count">数量</p>
@@ -46,14 +46,14 @@
 		                            <span class="change_dish" v-on:click='addDishCount($index)' v-if="false">+</span>
 		                        </p>
 		                    </li>
-		                    <li class="sum">
-		                        <span>共<span id="dish_cou">{{counter}}</span>份</span>
-		                        <!-- 这里添加一个触发状态的东西，一旦数目发生改变，这里的单价发生改变 -->
-		                        <span class="dollar " id="sum">{{ sum }}</span>
-		                        <input type="text" placeholder="打印机ID..." style="width:70px; height:25px" v-bind="printerid">
-		                        <button type="button" id="send_order" @click="sendOrder">确定</button>
-		                    </li>
 		                </ul>
+						<p class="sum">
+							<span>共<span id="dish_cou">{{counter}}</span>份</span>
+							<!-- 这里添加一个触发状态的东西，一旦数目发生改变，这里的单价发生改变 -->
+							<span class="dollar " id="sum">{{ sum }}</span>
+							<input type="text" placeholder="打印机ID..." style="width:70px; height:20px" v-bind="printerid">
+							<button type="button" id="send_order" @cpck="sendOrder">确定</button>
+						</p>
 		            </div>
 		            <div class="shooping_button">
 		                <button id="toggle_card" type="button" @click="toggle"></button>
@@ -62,6 +62,7 @@
 		        </div>
 		    </div>
 		</div>
+		<div id="ware"></div>
 	</div>
 </template>
 <script>

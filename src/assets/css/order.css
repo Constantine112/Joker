@@ -277,15 +277,21 @@ button{
 #model_all{
     overflow: hidden;
 }
-#model_all h1{
-    color: #5864ff;
+#model_all .page_title{
+    color: #545360;
+    width: 80%;
     padding: 27px 0 10px;
-    line-height: 30px;
+    /* line-height: 30px; */
     font-size: 24px;
-    border-bottom: 5px solid transparent;
+    border-bottom: 3px solid #d3d3d3;
     border-size: cover;
     background: linear-gradient(white,white) padding-box, linear-gradient(to top, #9287c2 0, #8da8ea 5px ,transparent) border-box;
-    margin: 62px 0 0 0;
+    margin: 62px 0 30px 0;
+}
+
+.page_title img {
+    vertical-align: middle;
+    margin-right: 10px;
 }
 
 /* #model_all h1:before{
@@ -296,18 +302,19 @@ button{
 } */
 
 .menu {
-    margin: 43px 0;
+    margin: 20px 0 43px 0;
     padding: 4px;
     width: 63.5%;
-    border: 9px solid #e5e5e5;
-    border-radius: 6px;
+    border: 1px solid #b2b2b2;
+    border-radius: 3px;
     float: left;
     clear: both;
 }
 .menu li{
     overflow: hidden;
+    /* text-align: center; */
 }
-.head p:before {
+/* .head p:before {
     content: "-";
     width: 16px;
     height: 16px;
@@ -316,38 +323,42 @@ button{
     color: transparent;
     background: radial-gradient( 9px 9px at 9px 9px, #87b9e7 82%, #729dc5 0);
     border-radius: 50%;
-}
+} */
 
 .dish_name {
     width: 210px;
     float: left;
-    text-indent: 20px;
+    text-indent: 30px;
+
 }
 
-.head .dish_name{
+.menu_head .dish_name{
     padding-left: 10px;
     width: 200px;
-    text-indent: 0;
+    text-indent: 5%;
+    font-weight: bold;
 }
 .dish_price {
+    margin-right:200px;
     width: 100px;
     float: left;
-    text-indent: 20px;
+    text-align: center;
+
 }
 
-.head .dish_price{
-    padding-left: 10px;
+.menu_head .dish_price{
     width: 100px;
-    text-indent: 0;
+    font-weight: bold;
 }
-.head .count{
-    padding-left: 11px;
+.menu_head .count{
+    margin-left: 60px;
     float: left;
+    font-weight: bold;
 }
 
-.menu li:first-of-type{
+/* .menu li:first-of-type{
     border-width: 2px;
-}
+} */
 .menu li:last-of-type{
     border: 0;
 }
@@ -363,13 +374,13 @@ button{
 
 .dollar{
     float: right;
-    margin-right: 15px;
+    /* margin-right: 15px; */
     width: 3em;
     color: #f75e3a;
 }
 
 .dollar:before{
-    content: '$';
+    content: '￥';
 }
 
 /** button **/
@@ -389,12 +400,14 @@ button{
 }
 
 .add_dish{
-    margin-left: 37px;
+    display: block;
+    margin-left: 60px;
     padding: 0px 10px 2px;
     border-radius: 7px;
     float: left;
     color: white;
-    background: #5864ff;
+    background: #b09aea;
+
     font-size: 20px;
     vertical-align: middle;
 }
@@ -409,11 +422,13 @@ button{
     margin-top: 1px;
     margin-left: 7px;
     border-radius: 50%;
-    border: 1px solid #5864ff;
+    border: 1px solid #b09aea;
+
     text-align: center;
     font-size: 18px;
     line-height: 18px;
-    color: #5864ff;
+    color: #b09aea;
+
 }
 
 .change_dish:hover{
@@ -422,7 +437,7 @@ button{
 }
 
 .nml{
-    margin-left: 7px;
+    /* margin-left: 7px; */
 }
 .dish_count{
     float: left;
@@ -474,13 +489,13 @@ button{
     float: left;
     font-size: 16px;
     margin-right: -37px;
-    font-weight: normal;
+    font-weight: bold;
 }
 
 .sc_head h2:before{
     content: '';
     margin-right: 10px;
-    width: 14px;
+    width: 5px;
     float: left;
     height: 27px;
     margin-left: 15px;
@@ -497,6 +512,12 @@ button{
 } */
 .coooo {
     position: absolute;
+    right: 0;
+    border: 0;
+    vertical-align: middle;
+    line-height: 28px;
+    color: #000;
+    font-size: 15px;
 }
 #shoppong_cart li{
     overflow: hidden;
@@ -508,12 +529,17 @@ button{
     height: 100%;
 }
 #shoppong_cart ul{
-    border-bottom: 1px solid #e5e5e5;
+    /* border-bottom: 1px solid #e5e5e5; */
 }
 #shoppong_cart .sum{
     overflow: hidden;
+    margin-bottom: 5px;
+    margin-top: 20px;
     border-top: 1px solid #e5e5e5;
+    padding-top: 10px;
+    height:45px;
 }
+
 
 #shoppong_cart .sum span{
     padding: 13px 10px ;
@@ -522,26 +548,41 @@ button{
 
 #shoppong_cart .sum button{
     float: right;
-    background: #58e580;
-    height: 42px;
+    background: #92aae1;
+
+    height: 40px;
+    line-height: 40px;
     padding: 0 34px;
     color: white;
-    font-size: 18px;
+    font-size: 15px;
     border: 0px;
 }
-#shoppong_cart .sum .dollar{
-    float: none;
-    border-left: 1px solid #e5e5e5;
+#shoppong_cart ul .dollar{
+    margin-right: 20px;
+    /* width: 100px; */
+    /* border-left: 1px solid #e5e5e5; */
+    color: #000;
 }
 
+#shoppong_cart #sum {
+    float:none;
+}
+
+
+
 #toggle_card{
-    background: url(../images/shopping_cart.png) no-repeat #5864ff center;
-    width: 34px;
-    height: 27px;
+    position: absolute;
+    top: -100px;
+    left: -40px;
+    background: url(../images/shopping_cart.png) no-repeat #9a8ae3 center;
+
+    width: 70px;
+    height: 70px;
     border: 0px;
-    border-radius: 3px;
-    padding: 24px;
+    border-radius: 50%;
+    padding: 15px;
     margin-top: 30px;
+    outline: none;
 }
 .shooping_button{
     float: right;
@@ -552,11 +593,12 @@ button{
     right: -67px;
 }
 #counter_num{
-background: #f75e3a;
+    background: #f75e3a;
     width: 1.5em;
     position: absolute;
     color: white;
-    top: 7px;
+    top: -80px;
+    left: 10px;
     height: 1.5em;
     border-radius: 50%;
     border: 2px solid #e5e5e5;
