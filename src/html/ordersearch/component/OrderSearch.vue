@@ -118,7 +118,7 @@
 		}
 	}
 </script>
-<style scoped src="../assets/css/order.css">
+<style scoped src="@/assets/css/order.css">
 .search_head{
     width: 50%;
 	font-size: 20px;

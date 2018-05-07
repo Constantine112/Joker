@@ -1,15 +1,18 @@
 <template>
 	<div id="container">
-		<div id="nav" class="wrapper" >
-		    <div class="user subwrapper">
-		    	<a href="#"></a>
-		        <span class="user_name">用户名字</span>
+		<div id="nav" class="wrapper">
+		    <div class="user">
+				<span class="userTitle">
+					基于合同网协议的集群打印系统
+				</span>
+		        <a href="#"></a>
+		        <span class="user_name" v-text="userName"></span>
 		    </div>
 		</div>
 		<div class="wrapper" id="send_main">
 		    <div class="subwrapper" id="model_all" style="text-align:left;">
 		        <p class="page_title"><img src="../../../assets/images/orders.png"><span>下单</span></p>
-		        <button class="button" type="button" onclick="window.location.replace('http://localhost:8080/html/orderIndex.html#/')">返回订单主页</button>
+		        <button class="button" type="button" onclick="window.open('http://localhost:8080/html/orderIndex.html#/')">返回订单主页</button>
 
 		        <ul class="menu">
 		            <li class="menu_head">

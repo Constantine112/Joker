@@ -36,20 +36,20 @@
 		            <ul class="sb_order">
 		                <li id="ab_od_typing" @click="showTyping" :class="{cur:isShow}">正在打印订单</li>
 		                <li id="ab_od_typed" @click="showTyped" :class="{cur:!isShow}">打印完成订单</li>
-		                <li id="ab_od_now">
-		                	<router-link to="/orderbuy">
+		                <li id="ab_od_search" style="background: #8985e3" onclick="window.open('http://localhost:8080/html/orderBuy.html#/')">
+		                	<!-- <router-link to="/orderbuy"> -->
 		                		自助下单
-		                	</router-link>
+		                	<!-- </router-link> -->
 		                </li>
-		                <li id="ab_od_search" style="background: #85afe3">
-		                	<router-link to="/batchsearch">
+		                <li id="ab_od_search" style="background: #85afe3" onclick="window.open('http://localhost:8080/html/batchSearch.html#/')">
+		                	<!-- <router-link to="/batchsearch"> -->
 		                		批次查询
-		                	</router-link>
+		                	<!-- </router-link> -->
 		                </li>
-		                <li id="ab_od_search" style="background: #85e38d">
-		                	<router-link to="/ordersearch">
+		                <li id="ab_od_search" style="background: #85e38d" onclick="window.open('http://localhost:8080/html/orderSearch.html#/')">
+		                	<!-- <router-link to="/ordersearch"> -->
 		                		查询订单
-		                	</router-link>
+		                	<!-- </router-link> -->
 		                </li>
 
 		            </ul>
@@ -297,21 +297,9 @@
     border-left: 6px solid #7b85df;
     padding: 0 0 0 10px;
 }
-.userTitle {
-	font-size: 28px;
-	position: absolute;
-	left: 40px;
-	height: 70px;
-	line-height: 70p;
-	top: 0;
-	color: #fff;
-}
+
 .system ul span {
 	color:#b431b2;
-}
-#ab_od_now {
-	background: #8985e3;
-	color: #fff;
 }
 #ab_od_search {
 	color: #fff;
