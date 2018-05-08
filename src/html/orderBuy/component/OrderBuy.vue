@@ -11,7 +11,7 @@
 		</div>
 		<div class="wrapper" id="send_main">
 		    <div class="subwrapper" id="model_all" style="text-align:left;">
-		        <p class="page_title"><img src="../../../assets/images/orders.png"><span>下单</span></p>
+		        <p class="page_title"><img src="../../../assets/images/orders.png"><span>打印机列表下单</span></p>
 		        <button class="button" type="button" onclick="window.open('http://localhost:8080/html/orderIndex.html#/')">返回订单主页</button>
 
 		        <ul class="menu">

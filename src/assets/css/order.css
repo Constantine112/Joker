@@ -295,13 +295,13 @@ button{
 #model_all{
     overflow: hidden;
 }
-#model_all .page_title{
+.page_title{
     color: #545360;
     width: 80%;
     padding: 27px 0 10px;
     /* line-height: 30px; */
     font-size: 24px;
-    border-bottom: 3px solid #d3d3d3;
+    border-bottom: 2px solid #adadad;
     border-size: cover;
     background: linear-gradient(white,white) padding-box, linear-gradient(to top, #9287c2 0, #8da8ea 5px ,transparent) border-box;
     margin: 62px 0 30px 0;
@@ -774,10 +774,50 @@ button{
 #order_factory input{
     text-indent: 10px;
 }
-/*  订单数量 */
-.order_sum_show{
+/*  主控板详情 */
+#zhukong {
+    margin: 80px 0 5px 35px;
+    padding: 35px 50px;
+    width: 60%;
+    border: 2px solid #888;
+    border-radius: 10px;
+}
+
+#zhukong .board_character {
+    display: inline-block;
+    width: 45%;
+    vertical-align: top;
+}
+
+#zhukong li {
+    display: inline-block;
+    width: 90%;
+    margin-bottom: 20px;
+    
+}
+
+#zhukong li:before {
+        position: relative;
+        top: -2px;
+        display: inline-block;
+        content: "-";
+        width: 13px;
+        height: 13px;
+        /* float: left; */
+        margin: 3px 10px;
+        color: transparent;
+        background: radial-gradient( 9px 9px at 9px 9px, #a8abad 82%, #9fa6ad 0);
+        border-radius: 50%;
+        vertical-align: middle;
 
 }
+
+#zhukong .print_detail {
+    display: inline-block;
+    width:45%;
+}
+
+
 
 
 /* order_search */
