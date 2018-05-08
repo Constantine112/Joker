@@ -11,7 +11,7 @@
 		</div>
 		<div class="wrapper mh of">
 	        <div class="subwrapper" style="text-align:left; font-size:18px;">
-				<p class="page_title"><img src="../../../assets/images/orders.png"><span>主控板详情</span></p>
+				<p class="page_title"><img src="../../../assets/images/zhukong.png"><span>主控板详情</span></p>
 	            	<!-- <router-link to="/ordersearch"><button type="button" class="button" >查询订单</button></router-link> -->
 
 	            <!-- <router-link to="/orderindex"><button class="button" type="button" style="float: right;">
@@ -33,7 +33,7 @@
 						<li>切刀错误次数：{{printer.successRate}}</li>
 					</ul>
 	           	</div>
-				<button class="button" type="button" onclick="window.open('http://localhost:8080/html/orderIndex.html#/">返回订单主页</button>
+				<button class="button" onclick="window.open('http://localhost:8080/html/orderIndex.html#/">返回订单主页</button>
 	        </div>
 		</div>
 		<div id="ware"></div>
