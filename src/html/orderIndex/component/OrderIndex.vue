@@ -287,8 +287,9 @@
 <style scoped src='../../../assets/css/order.css'></style>
 <style>
 .system {
-	width: 80%;
+	/* width: 80%; */
 	margin: 30px 20px 0 270px;
+	margin-top: 5%;
 	padding-left: 20px;
 }
 .section-head,
@@ -304,5 +305,6 @@
 #ab_od_search {
 	color: #fff;
 }
+
 </style>
 
