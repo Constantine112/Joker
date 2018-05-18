@@ -2,6 +2,9 @@
 	<div id="container">
 		<div id="nav" class="wrapper">
 		    <div class="user">
+				<span class="userTitle">
+					基于合同网协议的集群打印系统
+				</span>
 		        <a href="#"></a>
 		        <span class="user_name" v-text="userName"></span>
 		    </div>
@@ -9,43 +12,56 @@
 		<div class="wrapper mh of">
 			<div class="order_search">
 				<div class="search_head">
-					<router-link to="/orderindex">
-						<button class="button" type="button"style="float: right; margin-top: -1%;">返回订单主页</button>
-					</router-link>
-					<label for="searchInput">
-						>输入批次的ID:
-					<input type="text" id="searchInput" value="searchId" v-model="searchId">
-					</label>
-					<input type="submit" id="serachBtn" value="查询" @click="searhRequest">
-					<p>>查询结果 : </p>
+					<img src="../../../assets/images/icon.png"/>
+					<span></span>
+					<input type="text" style="height:44px;" id="searchInput" value="searchId" v-model="searchId" placeholder="输入订单的ID">
+					<button class="button" type="button" style="" v-on:click="toIndex">返回订单主页</button>
+						
+					<button type="button" class="button" value="查询" @click="searhRequest">查询</button>
+
 				</div>
-				<table>
-					<tr>
-						<th>总订单数</th>
-						<th>已完成订单数</th>
-						<th>未完成订单数</th>
-
-					</tr>
-					<tr v-if="!resultList.length">
-						<td colspan="13">订单号不存在...</td>
-					</tr>
-					<tr v-for="order in resultList">
-						<td>{{order.id}} </td>
-						<td>{{order.orderType === 0?"非加急":'加急'}} </td>
-						<td>{{order.bulkId}}</td>
-						<td>{{order.bulkIndex}}</td>
-						<td> {{order.sendTime}} </td>
-						<td>{{order.acceptTime}}</td>
-						<td>{{order.enterQueueTime}}</td>
-						<td>{{order.startPrintTime}} </td>
-						<td>{{order.execSendTime}}</td>
-						<td>{{order.execAcceptTime}} </td>
-						<td>{{order.execEnterQueueTime}}</td>
-						<td>{{order.execStartPrintTime}}</td>
-						<td>{{order.execPrintResultTime}}</td>
-					</tr>
-
-				</table>
+				<div class="result">
+					<p>查询结果 </p>
+					<div class="order-item">
+						<div class="item-head">
+							<div class="item-number">订单编号</div>
+							<div class="item-time">订单时间</div>
+							<div class="item-context">订单内容</div>
+						</div>
+						<div class="item-contain" v-for="result in resultList" v-bind:key="result">
+							<div class="item-number">{{result.number}}</div>
+							<div class="item-time">{{result.time}}</div>
+							<div class="item-context-c" >
+								<div class="order-first" v-for="cont in result.context" v-bind:key="cont">
+									<div class="order-first-commom">{{cont.good}}</div>
+									<div class="order-first-second">￥{{cont.price}}</div>
+									<div class="order-first-commom">{{cont.number}}份</div>
+								</div>
+								<!-- <div class="order-first">
+									<div class="order-first-commom">番茄烤肉</div>
+									<div class="order-first-second">￥11.00</div>
+									<div class="order-first-commom">1份</div>
+								</div> -->
+							</div>
+						</div>
+						<div class="item-contain">
+							<div class="item-number">375</div>
+							<div class="item-time">2018.01.11</div>
+							<div class="item-context-c">
+								<div class="order-first">
+									<div class="order-first-commom">番茄烤肉</div>
+									<div class="order-first-second">￥11.00</div>
+									<div class="order-first-commom">1份</div>
+								</div>
+								<div class="order-first">
+									<div class="order-first-commom">番茄烤肉</div>
+									<div class="order-first-second">￥11.00</div>
+									<div class="order-first-commom">1份</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div id="ware"></div>
@@ -61,40 +77,15 @@
 				userName:"小明",
 				userId:1,
 				searchId:'',
-				resultList:[
-					/*{
-						id:1,
-						orderType: 0,
-						bulkId: '2015-10-11 10:20:11',
-						bulkIndex:'2015-10-11 10:20:11',
-						sendTime:'2015-10-11 10:20:11',
-						acceptTime:'2015-10-11 10:20:11',
-						sendTime:'2015-10-11 10:20:11',
-						enterQueueTime:'2015-10-11 10:20:11',
-						startPrintTime:'2015-10-11 10:20:11',
-						execSendTime:'2015-10-11 10:20:11',
-						execAcceptTime:'2015-10-11 10:20:11',
-						execEnterQueueTime:'2015-10-11 10:20:11',
-						execStartPrintTime:'2015-10-11 10:20:11',
-						execPrintResultTime:'2015-10-11 10:20:11'
-					},
-					{
-						id:1,
-						orderType: 0,
-						bulkId: 1,
-						bulkIndex:1,
-						sendTime:1,
-						acceptTime:1,
-						sendTime:1,
-						enterQueueTime:1,
-						startPrintTime:1,
-						execAcceptTime:1,
-						execEnterQueueTime:1,
-						execSendTime:'2015-10-11 10:20:11',
-						execStartPrintTime:1,
-						execPrintResultTime:1
-					}*/
-				]
+				resultList:[{
+					number: 111,
+					time: "2018.01.11",
+					context: [{
+						good: "番茄烤肉",
+						price: '11.00',
+						number: 1
+					}]
+				}]
 			}
 		},
 		methods:{
@@ -110,6 +101,12 @@
 					 }).catch(function(res){
 					 	console.log(res);
 					 })
+			},
+			toIndex: function () {
+				this.toPage("../../orderIndex/orderIndex.html")
+			},
+			toPage: function (e) {
+				window.location.href = e;
 			}
 		},
 		created:function(){
@@ -124,3 +121,90 @@
 	font-size: 20px;
 }
 </style>
+<style>
+.table-class tr td{
+	border: 1px solid;
+} 
+#searchInput {
+	height: 44px;
+	padding: 0 20px;
+}
+.search_head img {
+	position: relative;
+	bottom: -14px;
+}
+.search_head > span {
+	width: 6px;
+	height: 44px;
+	display: inline-block;
+	background: #9f88e2;
+	position: relative;
+	bottom: -16px;
+	margin: 0 20px 0 16px;
+}
+.result {
+	text-align: left;
+	margin: 50px  0 0 0;
+	border-top: 1px solid #dbdbdb;
+	padding: 30px 0 0 0;
+}
+.result P {
+	font-size: 24px;
+}
+.order-item {
+	display: flex;
+	flex-direction: column;
+	width: 732px;
+	margin: 50px 0 0 40px;
+	padding: 30px;
+	border:  1px solid #dbdbdb;
+}
+.item-head {
+	display: flex;
+	padding: 0 0 20px 0;
+}
+.item-number {
+	width: 18%;
+}
+.item-time {
+	width: 18%;
+}
+.item-context {
+	flex-grow: 1;
+
+}
+.item-head > div:before {
+	content: '';
+    border-radius: 50%;
+	height: 14px;
+	width: 14px;
+	background: #dbdbdb;
+	display: inline-block;
+	margin: 0 10px 0 0;
+} 
+.item-head > div {
+	align-items: center;
+	display: flex;
+}
+.item-contain {
+	display: flex;
+	padding: 20px 0 20px 0 ;
+	border-top: 1px solid #dbdbdb;
+}
+.item-context-c {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+}
+.order-first {
+	display:flex;
+	flex-direction: row;
+}
+.order-first-second {
+    width: 57%;
+}
+.order-first-commom {
+	flex-grow: 1;
+}
+</style>
+

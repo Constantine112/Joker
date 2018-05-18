@@ -35,7 +35,7 @@ button{
 .userTitle {
   font-size: 28px;
   position: absolute;
-  left: 40px;
+  left: 236px;
   height: 70px;
   line-height: 70p;
   top: 0;
@@ -84,7 +84,7 @@ button{
     color: #aaa;
 }
 .user {
-    margin-right: 10%;
+    margin: 0 10%;
     line-height: 60px;
     padding: 5px 0;
     overflow: hidden;
