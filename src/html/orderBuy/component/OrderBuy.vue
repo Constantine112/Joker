@@ -41,7 +41,7 @@
 		                </div>
 		                <ul>
 
-		                    <li v-for="dish,$index  in dishes" >
+		                    <li v-for="dish,$index  in dishes">
 		                        <p class="dish_name">{{dish.name}} <span class="dollar">{{dish.price}}</span></p>
 		                        <p class="dish_status">
 		                            <span class="change_dish nml" v-on:click='reduceDishCount($index)' v-if="false">-</span>

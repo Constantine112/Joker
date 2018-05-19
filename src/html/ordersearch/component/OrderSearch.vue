@@ -15,10 +15,10 @@
 					<img src="../../../assets/images/icon.png"/>
 					<span></span>
 					<input type="text" style="height:44px;" id="searchInput" value="searchId" v-model="searchId" placeholder="输入订单的ID">
-					<button class="button" type="button" style="" v-on:click="toIndex">返回订单主页</button>
+
 						
 					<button type="button" class="button" value="查询" @click="searhRequest">查询</button>
-
+					<button class="button" type="button" style="" v-on:click="toIndex">返回订单主页</button>
 				</div>
 				<div class="result">
 					<p>查询结果 </p>
@@ -32,33 +32,15 @@
 							<div class="item-number">{{result.number}}</div>
 							<div class="item-time">{{result.time}}</div>
 							<div class="item-context-c" >
-								<div class="order-first" v-for="cont in result.context" v-bind:key="cont">
-									<div class="order-first-commom">{{cont.good}}</div>
-									<div class="order-first-second">￥{{cont.price}}</div>
-									<div class="order-first-commom">{{cont.number}}份</div>
+								<div class="order-first">
+									<div class="order-first-commom">{{result.good}}</div>
+									<div class="order-first-second">￥{{result.price}}</div>
+									<div class="order-first-commom">{{result.number}}份</div>
 								</div>
-								<!-- <div class="order-first">
-									<div class="order-first-commom">番茄烤肉</div>
-									<div class="order-first-second">￥11.00</div>
-									<div class="order-first-commom">1份</div>
-								</div> -->
 							</div>
 						</div>
-						<div class="item-contain">
-							<div class="item-number">375</div>
-							<div class="item-time">2018.01.11</div>
-							<div class="item-context-c">
-								<div class="order-first">
-									<div class="order-first-commom">番茄烤肉</div>
-									<div class="order-first-second">￥11.00</div>
-									<div class="order-first-commom">1份</div>
-								</div>
-								<div class="order-first">
-									<div class="order-first-commom">番茄烤肉</div>
-									<div class="order-first-second">￥11.00</div>
-									<div class="order-first-commom">1份</div>
-								</div>
-							</div>
+						<div class="item-contain" v-if=" resultList.length == 0 ">
+							<div>无订单</div>
 						</div>
 					</div>
 				</div>
@@ -77,33 +59,24 @@
 				userName:"小明",
 				userId:1,
 				searchId:'',
-				resultList:[{
-					number: 111,
-					time: "2018.01.11",
-					context: [{
-						good: "番茄烤肉",
-						price: '11.00',
-						number: 1
-					}]
-				}]
+				resultList:[]
 			}
 		},
 		methods:{
 			searhRequest:function(){
 				var that  = this;
-				axios.get('http://47.106.74.67:8080/order/'+this.userId+'/'+this.searchId)
-					 .then(function(res){
-					 	if(res.status===200){
-					 		that.resultList = res.data.data;
-					 	}else{
-					 		alert('无结果');
-					 	}
-					 }).catch(function(res){
+				axios.post('http://47.106.74.67:8080//show/menu/' + that.searchId).then(function(res){
+					if(res.status===200){
+					 	that.resultList = res.data.data;
+					}else{
+					 	alert('无结果');
+					}
+				}).catch(function(res){
 					 	console.log(res);
-					 })
+				})
 			},
 			toIndex: function () {
-				this.toPage("../../orderIndex/orderIndex.html")
+				this.toPage("../../html/orderIndex.html")
 			},
 			toPage: function (e) {
 				window.location.href = e;
@@ -167,7 +140,7 @@
 	width: 18%;
 }
 .item-time {
-	width: 18%;
+	width: 30%;
 }
 .item-context {
 	flex-grow: 1;

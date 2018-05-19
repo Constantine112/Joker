@@ -20,20 +20,20 @@
 	           	<div id="zhukong">
 	           		<!-- <h3>主控板详细参数:{{printer.id}}</h3> -->
 					<ul class="board_character">
-						<li>主控板编号：</li>
-						<li>主控板状态：</li>
-						<li>连接打印机数量：</li>
+						<li>主控板编号：{{printerId}}</li>
+						<li>主控板状态：{{printerStatus}}</li>
+						<li>连接打印机数量：{{units}}</li>
 					</ul>
 					<ul class="print_detail">
-						<li>连续打印时长：{{printer.orderNum}}</li>
-						<li>已打印时长：{{printer.sendedOrderNum}}</li>
-						<li>已打印订单份数：{{printer.unsendedOrderNum}}</li>
-						<li>打印机健康状态：{{printer.printSuccessNum}}</li>
-						<li>总切刀次数：{{printer.printErrorNum}}</li>
-						<li>切刀错误次数：{{printer.successRate}}</li>
+						<li>连续打印时长：{{hasTypedTime}}</li>
+						<li>已打印时长：{{sendedOrderNum}}</li>
+						<li>已打印订单份数：{{orderSum}}</li>
+						<li>打印机健康状态：{{printSuccessNum}}</li>
+						<li>总切刀次数：{{cutSum}}</li>
+						<li>切刀错误次数：{{cunErrorSum}}</li>
 					</ul>
 	           	</div>
-				<button class="button" onclick="window.open('http://localhost:8080/html/orderIndex.html#/">返回订单主页</button>
+				<button class="button" onclick="window.open('../../html/orderIndex.html">返回订单主页</button>
 	        </div>
 		</div>
 		<div id="ware"></div>
@@ -46,16 +46,47 @@
 			return {
 				userName:'小明',
 				printer:{},
-				printerId: this.$route.query.printerId
+				printerId: null,
+				printerStatus: 'is printing',
+				hasTypedTime: "910978ms",
+				cunErrorSum: 100,
+				orderSum: 0,
+				cutSum: 1,
+				printSuccessNum: 1,
+				sendedOrderNum: 1,
+				units: 1,
 			}
 		},
+		computed: {
+
+		},
 		methods:{
+			// 解析url
+			reversedMessage: function () {
+			// `this` 指向 vm 实例
+			var url =  window.location.href;
+			    var str = url.split("?")[1],    //通过?得到一个数组,取?后面的参数
+			        items = str.split("&");    //分割成数组
+			     var arr,name,value;
+			 
+			         arr = items[0].split("=");    //["key0", "0"]
+			         name = arr[0];
+			         value = arr[1];
+				this.printerId = parseInt(arr[1]);
+			},
 			getStatus:function(){
 				var that = this;
 				console.log(this.printerId)
-				axios.get('http://47.106.74.67:8080/printer/status/'+this.printerId)
+				axios.post('http://47.106.74.67:8080/system/printerdetail/'+this.printerId)
 					 .then(function(res){
-					 	that.printerStatus = res.data.data;
+						that.printerStatus = res.data.data.printerStatus
+						that.hasTypedTime = res.data.data.hasTypedTime
+						that.cunErrorSum = res.data.data.cunErrorSum
+						that.orderSum = res.data.data.orderSum
+						that.cutSum = res.data.data.cutSum
+						that.printSuccessNum = res.data.data.orderSum
+						that.sendedOrderNum = res.data.data.hasTypedTime
+						that.units = res.data.data.unitsSum
 					 })
 					 .catch(function(res){
 					 	console.log(res);
@@ -64,6 +95,7 @@
 			}
 		},
 		created:function(){
+			this.reversedMessage()
 			this.getStatus();
 			//设置背景色
 			document.getElementsByTagName('body')[0].className = 'orderbox';

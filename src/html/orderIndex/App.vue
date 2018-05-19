@@ -6,6 +6,10 @@
 
 <script>
 import OrderIndex from './component/OrderIndex'
+process.on('unhandledRejection', error => {
+  // Won't execute
+  console.log('unhandledRejection', error.test);
+});
 export default {
     name: 'app',
     components: {

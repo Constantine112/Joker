@@ -2,11 +2,11 @@
 	<li>
 		<span></span>
         <p>
-            <router-link :to="{ path: 'printerindex', query: { printerId: printer.id }}" >
-            	{{printer.id}}号主控板<br><!-- ({{printer.trust}}) -->
-				主板状态：&nbsp;&nbsp;&nbsp;&nbsp;3
-              <br>打印机数量：&nbsp;&nbsp;2
-            </router-link>
+            <div @click=toPrinter(printer.printerId)>
+            	{{printer.printerId}}号主控板<br><!-- ({{printer.trust}}) -->
+				主板状态：{{printer.printerStatus}}
+              <br>打印机数量：{{printer.unitsSum}}
+            </div>
         </p>
         <!-- <p class="printer_status" :class="statusClass">
             {{statusText}}
@@ -78,6 +78,11 @@
 				        break;
 				}
 				return format;
+			}
+		},
+		methods: {
+			toPrinter: function (e) {
+				window.open('../../html/printerIndex.html?printerId=' + e);
 			}
 		}
 	}

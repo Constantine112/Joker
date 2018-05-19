@@ -9,7 +9,10 @@
 <script>
 
 import orderSearch from './component/OrderSearch';
-
+process.on('unhandledRejection', error => {
+  // Won't execute
+  console.log('unhandledRejection', error.test);
+});
 export default {
   name: 'app',
   template: '<orderSearch/>',

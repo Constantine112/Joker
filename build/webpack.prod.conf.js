@@ -146,35 +146,32 @@ if (config.build.bundleAnalyzerReport) {
   webpackConfig.plugins.push(new BundleAnalyzerPlugin())
 }
 
-module.exports = webpackConfig
+
 
 var pages = utils.getEntries('./src/html/**/*.html');
 
 for (var pathname in pages) {
-    // 配置生成的html文件，定义路径等
-    var conf = {
-    // favicon: "favicon.ico",
-    filename: pathname + '.html',
-    template:  pages[pathname][1],   // 模板路径
-    inject: true,              // js插入位置
-    minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeAttributeQuotes: true
-        // more options:
-        // https://github.com/kangax/html-minifier#options-quick-reference
-        },
-    // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-    chunksSortMode: function (chunk1, chunk2) {
-      var order1 = chunks.indexOf(chunk1.names[0])
-      var order2 = chunks.indexOf(chunk2.names[0])
-      return order1 - order2
-    },
-    };
-    if (pathname in module.exports.entry) {    //为页面导入所需的依赖
-      conf.chunks = ['vendor','manifest', pathname];
-      conf.hash = false;
-    }
-    webpackConfig.plugins.push(new HtmlWebpackPlugin(conf));
+  // 配置生成的html文件，定义路径等
+  var conf = {
+  // favicon: "favicon.ico",
+  filename: pathname + '.html',
+  template:  pages[pathname][1],   // 模板路径
+  inject: true,              // js插入位置
+  minify: {
+      removeComments: true,
+      collapseWhitespace: true,
+      removeAttributeQuotes: true
+      // more options:
+      // https://github.com/kangax/html-minifier#options-quick-reference
+      },
+  // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+  chunksSortMode: 'dependency',
+  };
+  if (pathname in webpackConfig.entry) {    //为页面导入所需的依赖
+  conf.chunks = ['vendor','manifest', pathname];
+  conf.hash = false;
+  }
+  webpackConfig.plugins.push(new HtmlWebpackPlugin(conf));
 }
 
+module.exports = webpackConfig

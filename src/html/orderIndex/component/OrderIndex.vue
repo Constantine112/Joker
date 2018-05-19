@@ -36,17 +36,17 @@
 		            <ul class="sb_order">
 		                <li id="ab_od_typing" @click="showTyping" :class="{cur:isShow}">正在打印订单</li>
 		                <li id="ab_od_typed" @click="showTyped" :class="{cur:!isShow}">打印完成订单</li>
-		                <li id="ab_od_search" style="background: #8985e3" onclick="window.open('http://localhost:8080/html/orderBuy.html#/')">
+		                <li id="ab_od_search" style="background: #8985e3" onclick="window.open('../../html/orderBuy.html')">
 		                	<!-- <router-link to="/orderbuy"> -->
 		                		自助下单
 		                	<!-- </router-link> -->
 		                </li>
-		                <li id="ab_od_search" style="background: #85afe3" onclick="window.open('http://localhost:8080/html/batchSearch.html#/')">
+		                <li id="ab_od_search" style="background: #85afe3" onclick="window.open('../../html/batchSearch.html')">
 		                	<!-- <router-link to="/batchsearch"> -->
 		                		批次查询
 		                	<!-- </router-link> -->
 		                </li>
-		                <li id="ab_od_search" style="background: #85e38d" onclick="window.open('http://localhost:8080/html/orderSearch.html#/')">
+		                <li id="ab_od_search" style="background: #85e38d" onclick="window.open('../../html/ordersearch.html')">
 		                	<!-- <router-link to="/ordersearch"> -->
 		                		查询订单
 		                	<!-- </router-link> -->
@@ -132,65 +132,57 @@
     // },
 		methods:{
 			inv: function () {
-				var that = this;
-				setInterval(()=>{
-				that.tuntu = that.tuntu + that.add;
-				that.add++;
-				if(that.add == 6) {
-					that.add = -5;
-				}
-				// console.log(1);
-				}, 500);	
+	
       		},
 			showTyped:function(){
 				var that = this;
-				// axios.get('http://47.106.74.67:8080/order/typed/'+this.userId)
-				// 	 .then(function(res){
-				// 	 	that.curList = res.data.data;
-				// 	 }).catch(function(res){
-				// 	 	alert("获取正在打印订单失败!")
-				// 	 });
-				// clearInterval(that.time);
-				// that.time=setInterval(()=>{
-				//   axios.get('http://47.106.74.67:8080/order/typed/'+this.userId)
-				//    .then(function(res){
-				//     that.curList = res.data.data;
-				//    }).catch(function(res){
-				//     alert("获取正在打印订单失败!")
-				//    });
-				//   axios.get('http://47.106.74.67:8080/order/typing/'+this.userId)
-				//    .then(function(res){
-				//     that.curList = res.data.data;
-				//    }).catch(function(res){
-				//     alert("获取打印完成订单失败!")
-				//    });
-				// }, 2000);
+				axios.get('http://47.106.74.67:8080/order/typed/'+this.userId)
+					 .then(function(res){
+					 	that.curList = res.data.data;
+					 }).catch(function(res){
+					 	alert("获取正在打印订单失败!")
+					 });
+				clearInterval(that.time);
+				that.time=setInterval(()=>{
+				  axios.get('http://47.106.74.67:8080/order/typed/'+this.userId)
+				   .then(function(res){
+				    that.curList = res.data.data;
+				   }).catch(function(res){
+				    alert("获取正在打印订单失败!")
+				   });
+				  axios.get('http://47.106.74.67:8080/order/typing/'+this.userId)
+				   .then(function(res){
+				    that.curList = res.data.data;
+				   }).catch(function(res){
+				    alert("获取打印完成订单失败!")
+				   });
+				}, 2000);
 					this.isShow = false;
 
 				},
 			showTyping:function(){
 				var that = this;
-				// axios.get('http://47.106.74.67:8080/order/typing/'+this.userId)
-				// 	 .then(function(res){
-				// 	 	that.curList = res.data.data;
-				// 	 }).catch(function(res){
-				// 	 	alert("获取打印完成订单失败!")
-				// 	 });
-				// clearInterval(that.time);
-				// that.time=setInterval(()=>{
-				// axios.get('http://47.106.74.67:8080/order/typed/'+this.userId)
-				// .then(function(res){
-				// 	that.curList = res.data.data;
-				// }).catch(function(res){
-				// 	alert("获取正在打印订单失败!")
-				// });
-				// axios.get('http://47.106.74.67:8080/order/typing/'+this.userId)
-				// .then(function(res){
-				// 	that.curList = res.data.data;
-				// }).catch(function(res){
-				// 	alert("获取打印完成订单失败!")
-				// });
-				// }, 20000);
+				axios.get('http://47.106.74.67:8080/order/typing/'+this.userId)
+					 .then(function(res){
+					 	that.curList = res.data.data;
+					 }).catch(function(res){
+					 	alert("获取打印完成订单失败!")
+					 });
+				clearInterval(that.time);
+				that.time=setInterval(()=>{
+				axios.get('http://47.106.74.67:8080/order/typed/'+this.userId)
+				.then(function(res){
+					that.curList = res.data.data;
+				}).catch(function(res){
+					alert("获取正在打印订单失败!")
+				});
+				axios.get('http://47.106.74.67:8080/order/typing/'+this.userId)
+				.then(function(res){
+					that.curList = res.data.data;
+				}).catch(function(res){
+					alert("获取打印完成订单失败!")
+				});
+				}, 20000);
 				this.isShow = true;
 				this.inv();
 			},
@@ -217,14 +209,14 @@
 			},
 			showPrinters:function(){
 				var that = this;
-				// axios.get('http://47.106.74.67:8080/printer/'+this.userId)
-				// 	 .then(function(res){
-				// 	 	that.printerList = res.data.data;
+				axios.get("http://47.106.74.67:8080/system/showprinters")
+					 .then(function(res){
+					 	that.printerList = res.data.data;
 
-    //        }
-				// 	 }).catch(function(res){
-				// 	 	alert("获取打印机列表失败!")
-				// 	 });
+           			}
+					 ).catch(function(res){
+					 	alert("获取打印机列表失败!")
+					 });
            // {
            //  connected: false,
            //  cre: 5,
@@ -239,26 +231,7 @@
            //  successRate: 0,
            //  unsendedOrdersNum: 0,
            // }
-           for (let i = 1; i <= 6; i++) {
-              let data = {
-                connected: false,
-                cre: 5,
-                id: i,
-                ordersNum: 0,
-                price: 10,
-                printErrorNum: 0,
-                printSuccessNum: 0,
-                printerStatus: '14',
-                sendedOrdersNum: 0,
-                speed: 2,
-                successRate: 0,
-                unsendedOrdersNum: 0,
-              }
-              if ( i >= 4 ) {
-                data.printerStatus= '15'
-              }
-              that.printerList.push(data);
-           }
+
 
 			},
 			addPrinterDom:function(){
@@ -271,6 +244,22 @@
 			},
 			quit:function(){
 				this.isAddShow = false;
+			},
+			setInfo: function () {
+				let that = this
+				axios.get('http://47.106.74.67:8080/system/status')
+					.then(function(res){
+						if(res.status==200){
+							that.tuntu = res.data.data.handlingCapacity
+							that.connumber = res.data.data.printersSum
+							that.error = res.data.data.errorRate * 10
+							that.printing = res.data.data.isTyping
+							that.number = res.data.data.typesSum
+							that.total = res.data.data.unitsSum
+						}
+					}).catch(function(res){
+							// alert('请求信息失败!')
+					})
 			}
 		},
 		created: function(){
@@ -280,8 +269,11 @@
 			this.showPrinters();
 			//设置背景色
 	// 		document.getElementsByTagName('body')[0].className = 'orderbox';
-    //   this.inv();
-		}
+	//   this.inv();
+			let that = this
+			setInterval(this.setInfo, 1000)
+		},
+
 	}
 </script>
 <style scoped src='../../../assets/css/order.css'></style>

@@ -7,7 +7,10 @@
 <script>
 
 import orderSearch from './component/BatchSearch';
-
+process.on('unhandledRejection', error => {
+  // Won't execute
+  console.log('unhandledRejection', error.test);
+});
 export default {
   name: 'app',
   template: '<orderSearch/>',

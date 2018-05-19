@@ -31,6 +31,7 @@
 <script>
 	// import axios from 'axios';
 	import {mapState, mapActions} from 'vuex';
+
 	export default {
 		name: 'register',
 		data(){
@@ -62,39 +63,39 @@
 			]),
 			registerQuest(){
 				let that = this;
-				// axios.post('http://47.106.74.67:8080/register',{
-        //   'data': JSON.stringify({
-        //     userName:that.userName,
-        //     userAccount: that.userAccount,
-        //     userPassword:that.userPassword,
-        //     userPhone:that.userPhone,
-        //     userStore:that.userStore,
-        //     id:that.id,
-        //     userAddress:that.userAddress
-        //   })})
-        //   .then(function(res){
-        //     if(res.status===200){
-        //       that.$router.push('/login');
-        //     }
-        //   })
-        //   .catch(function(res){
-        //     console.log(res);
-        //     alert("注册失败!");
-		//   })
-				this.register({
-					userName: that.userName,
-					userAccount:that.userAccount,
-					userPassword: that.userPassword,
-					userStore: that.userStore,
-					userAddress: that.userAddress,
-					userPhone: that.userPhone,
-					id: that.id
-				}).then((data)=>{
-						// console.log(data);
-					console.log(1)
-				}).catch(err => {
-					console.log(err)
-				})
+			axios.post('http://47.106.74.67:8080/register',{
+          'data': JSON.stringify({
+            userName:that.userName,
+            userAccount: that.userAccount,
+            userPassword:that.userPassword,
+            userPhone:that.userPhone,
+            userStore:that.userStore,
+            id:that.id,
+            userAddress:that.userAddress
+          })})
+          .then(function(res){
+            if(res.status===200){
+              that.$router.push('/login');
+            }
+          })
+          .catch(function(res){
+            console.log(res);
+            alert("注册失败!");
+		  		})
+				// this.register({
+				// 	userName: that.userName,
+				// 	userAccount:that.userAccount,
+				// 	userPassword: that.userPassword,
+				// 	userStore: that.userStore,
+				// 	userAddress: that.userAddress,
+				// 	userPhone: that.userPhone,
+				// 	id: that.id
+				// }).then((data)=>{
+				// 		// console.log(data);
+				// 	console.log(1)
+				// }).catch(err => {
+				// 	console.log(err)
+				// })
 			}
 		},
 		created:function(){

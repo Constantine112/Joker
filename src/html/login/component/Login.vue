@@ -50,30 +50,29 @@ import {mapState, mapActions} from 'vuex';
 				}
 
 				
-				this.login({
-						userAccount: that.userAccount,
-						userPassword:that.userPassword
-					}).then((data)=>{
-						// console.log(data);
-						this.loginSuccess = this.user.success
-						window.location = '../../orderIndex/orderIndex.html'
-					}).catch(err => {
-						console.log(err)
-					})
-        // that.$router.push('/orderindex');
-				// axios.get('http://47.106.74.67:8080/login',{
-				// 	'data': JSON.stringify({
+				// this.login({
 				// 		userAccount: that.userAccount,
 				// 		userPassword:that.userPassword
-				// 	})})
-				// 	.then(function(res){
-				// 		/*if(res.status===200){*/
-				// 			that.$router.push('/orderindex');
-				// 		/*}*/
+				// 	}).then((data)=>{
+				// 		// console.log(data);
+				// 		this.loginSuccess = this.user.success
+				// 		window.location = '../../orderIndex/orderIndex.html'
+				// 	}).catch(err => {
+				// 		console.log(err)
 				// 	})
-				// 	.catch(function(res){
-				// 		alert("登录失败！")
-				// 	})
+        // that.$router.push('/orderindex');
+				axios.post('http://47.106.74.67:8080/login',{
+					'data': JSON.stringify({
+						userAccount: that.userAccount,
+						userPassword:that.userPassword
+					})})
+					.then(function(res){
+						this.loginSuccess = res.data.data.success
+						window.location = '../../orderIndex/orderIndex.html'
+					})
+					.catch(function(res){
+						alert("登录失败！")
+					})
         // axios.post('/login',{
         //   'data': JSON.stringify({
         //     userAccount: that.userAccount,
