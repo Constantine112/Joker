@@ -31,7 +31,7 @@
 <script>
 	// import axios from 'axios';
 	import {mapState, mapActions} from 'vuex';
-
+	import axios from 'axios'
 	export default {
 		name: 'register',
 		data(){

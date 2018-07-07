@@ -55,7 +55,7 @@
 							<!-- 这里添加一个触发状态的东西，一旦数目发生改变，这里的单价发生改变 -->
 							<span class="dollar " id="sum">{{ sum }}</span>
 							<input type="text" placeholder="打印机ID..." style="width:70px; height:20px" v-bind="printerid">
-							<button type="button" id="send_order" @cpck="sendOrder">确定</button>
+							<button type="button" id="send_order" @click="sendOrder">确定</button>
 						</p>
 		            </div>
 		            <div class="shooping_button">
@@ -69,6 +69,7 @@
 	</div>
 </template>
 <script>
+
 	import axios from 'axios'
 	export default {
 		name: 'orderBuy',
@@ -183,7 +184,6 @@
 					return ;
 				}
 				var hh = JSON.stringify(data);
-				console.log(data);http://10.21.48.11:8888/printer/sendBulk/1/0/20/6/2
 				axios.get("http://47.106.74.67:8080/printer/choicePrinter/"+ '2/'  + data.items.length + '/1/2').then(function(res){
 					alert('下单成功')
 				}).catch(function(res){
