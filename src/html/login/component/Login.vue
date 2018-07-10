@@ -44,48 +44,44 @@ import axios from 'axios'
         'login',
       ]),
 			loginQuest(){
-				let that = this;
+				
 				if(this.userPassword.length===0||this.userAccount.length===0){
 					return false;
 				}
 
-				
-				// this.login({
-				// 		userAccount: that.userAccount,
-				// 		userPassword:that.userPassword
-				// 	}).then((data)=>{
-				// 		// console.log(data);
-				// 		this.loginSuccess = this.user.success
-				// 		window.location = '../../orderIndex/orderIndex.html'
-				// 	}).catch(err => {
-				// 		console.log(err)
-				// 	})
-        // that.$router.push('/orderindex');
-				axios.post('http://47.106.74.67:8080/login',{
-					'data': JSON.stringify({
+			var that = this;
+			var data = {
 						userAccount: that.userAccount,
 						userPassword:that.userPassword
-					})})
-					.then(function(res){
-						this.loginSuccess = res.data.data.success
-						window.location = '../../orderIndex/orderIndex.html'
-					})
-					.catch(function(res){
-						alert("登录失败！")
-					})
-        // axios.post('/login',{
-        //   'data': JSON.stringify({
-        //     userAccount: that.userAccount,
-        //     userPassword:that.userPassword
-        //   })})
-        //   .then(function(res){
-        //     /*if(res.status===200){*/
-        //       that.$router.push('/orderindex');
-        //     /*}*/
-        //   })
-        //   .catch(function(res){
-        //     alert("登录失败！")
-        //   })
+			}
+			// axios.post('http://47.106.74.67:8080/login', JSON.stringify(data))
+			// .then(function (response) {
+			// 	          	if (res.data.data.success) {
+			// 				window.location = '../../orderIndex/orderIndex.html'
+			// 			} else {
+			// 				alert("登录失败！")
+			// 			}
+			// })
+			// .catch(function (error) {
+			// 	console.log(error);
+			// });
+			axios({
+        method: 'POST',
+        url: 'http://47.106.74.67:8080/login',
+        data: JSON.stringify(data),
+				headers: {'Content-Type': 'application/json'},
+				// withCredentials: true
+      }).then(function (res) {
+        
+          	if (res.data.data.success) {
+							window.location = '../../html/orderIndex.html'
+						} else {
+							alert("登录失败！")
+						}
+      }).catch(function (err) {
+        alert("登录失败！")
+      })
+
 			}
 		},
 		created:function(){
